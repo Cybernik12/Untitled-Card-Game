@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuk0lgjsw8ov7"]
+
+[ext_resource type="Script" path="res://Scripts/cardZone.gd" id="1_qbrwq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjba3"]
+
+[node name="cardZone" type="StaticBody2D" groups=["dropable"]]
+script = ExtResource("1_qbrwq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(9.5, 13.25)
+shape = SubResource("RectangleShape2D_jjba3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -95.0
+offset_top = -132.0
+offset_right = 5053.0
+offset_bottom = 7837.0
+scale = Vector2(0.0369021, 0.0331293)

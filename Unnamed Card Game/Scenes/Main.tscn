@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://j7yisv3sv737"]
+
+[ext_resource type="PackedScene" uid="uid://coiuojm6o1c8b" path="res://Scenes/card.tscn" id="1_dj4vd"]
+[ext_resource type="Script" path="res://Scripts/global.gd" id="1_rpqcc"]
+[ext_resource type="PackedScene" uid="uid://cuk0lgjsw8ov7" path="res://Scenes/card_zone.tscn" id="3_hq7ko"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_rpqcc")
+
+[node name="Card" parent="." instance=ExtResource("1_dj4vd")]
+position = Vector2(117, 491)
+
+[node name="cardZone" parent="." instance=ExtResource("3_hq7ko")]
+position = Vector2(111, 151)
+
+[node name="cardZone2" parent="." instance=ExtResource("3_hq7ko")]
+position = Vector2(344, 151)
+
+[node name="cardZone3" parent="." instance=ExtResource("3_hq7ko")]
+position = Vector2(558, 152)
+
+[node name="cardZone4" parent="." instance=ExtResource("3_hq7ko")]
+position = Vector2(790, 154)
+
+[node name="cardZone5" parent="." instance=ExtResource("3_hq7ko")]
+position = Vector2(1018, 154)
+
+[node name="Card2" parent="." instance=ExtResource("1_dj4vd")]
+position = Vector2(346, 488)
+
+[node name="Card3" parent="." instance=ExtResource("1_dj4vd")]
+position = Vector2(564, 486)
+
+[node name="Card4" parent="." instance=ExtResource("1_dj4vd")]
+position = Vector2(796, 486)
+
+[node name="Card5" parent="." instance=ExtResource("1_dj4vd")]
+position = Vector2(1018, 486)
