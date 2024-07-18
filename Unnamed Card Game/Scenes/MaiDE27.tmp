@@ -11,7 +11,7 @@ script = ExtResource("1_rpqcc")
 position = Vector2(265, 173)
 
 [node name="cardZone2" parent="." instance=ExtResource("3_hq7ko")]
-position = Vector2(621, 178)
+position = Vector2(607, 175)
 
 [node name="cardZone3" parent="." instance=ExtResource("3_hq7ko")]
 position = Vector2(969, 177)
@@ -23,4 +23,4 @@ position = Vector2(1355, 180)
 position = Vector2(1695, 179)
 
 [node name="Inherited Card" parent="." instance=ExtResource("3_y63jo")]
-position = Vector2(289, 639)
+position = Vector2(255, 663)
