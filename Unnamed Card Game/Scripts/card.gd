@@ -11,8 +11,38 @@ var initialPos: Vector2
 # Base Card Variables
 var cost
 var attack
-var deffence
+var defence
 var type
+var can_boost
+var trigger
+var effect
+var sprite
+
+var all_cards = {
+	# Leader
+	"Joe": 	 {"Cost": null, "Attack": 15000, "Defence": null, "Type": "Leader", "Can Boost": false, "Trigger": null, "Effect": null, "Sprite": "res://Assets/Sprites/Cards/Leader/Leader (Front).png"},
+	"Joe Mama": 	 {"Cost": null, "Attack": 25000, "Defence": null, "Type": "Leader", "Can Boost": false, "Trigger": null, "Effect": null, "Sprite": "res://Assets/Sprites/Cards/Leader/Leader (Back).png"},
+
+	# Creatures
+	"Charlie": 	 {"Cost": 1, "Attack": 5000, "Defence": 10000, "Type": "Creature", "Can Boost": true, "Trigger": "Critical", "Effect": null, "Sprite": "res://Assets/Sprites/Cards/Creature/Charley.png"},
+	"Duncan": 	 {"Cost": 3, "Attack": 25000, "Defence": 10000, "Type": "Creature", "Can Boost": false, "Trigger": null, "Effect": null, "Sprite": "res://Assets/Sprites/Cards/Creature/Duncan.png"},
+	"IanNAnthony": 	 {"Cost": 1, "Attack": 5000, "Defence": 10000, "Type": "Creature", "Can Boost": true, "Trigger": "Draw", "Effect": null, "Sprite": "res://Assets/Sprites/Cards/Creature/Ian and Anthony.png"},
+	"Lewis": 	 {"Cost": 4, "Attack": 25000, "Defence": 5000, "Type": "Creature", "Can Boost": false, "Trigger": null, "Effect": null, "Sprite": "res://Assets/Sprites/Cards/Creature/Lewis.png"},
+	"Mama": 	 {"Cost": 1, "Attack": 5000, "Defence": 5000, "Type": "Creature", "Can Boost": true, "Trigger": null, "Effect": null, "Sprite": "res://Assets/Sprites/Cards/Creature/Mama.png"},
+	"Poet": 	 {"Cost": 1, "Attack": 5000, "Defence": 10000, "Type": "Creature", "Can Boost": true, "Trigger": "Heal", "Effect": null, "Sprite": "res://Assets/Sprites/Cards/Creature/Poet.png"},
+	"Shane": 	 {"Cost": 4, "Attack": 25000, "Defence": 5000, "Type": "Creature", "Can Boost": false, "Trigger": null, "Effect": null, "Sprite": "res://Assets/Sprites/Cards/Creature/Shane.png"},
+	"Simon": 	 {"Cost": 5, "Attack": 35000, "Defence": 0, "Type": "Creature", "Can Boost": false, "Trigger": null, "Effect": null, "Sprite": "res://Assets/Sprites/Cards/Creature/Simon.png"},
+	"Sips": 	 {"Cost": 2, "Attack": 20000, "Defence": 10000, "Type": "Creature", "Can Boost": false, "Trigger": null, "Effect": null, "Sprite": "res://Assets/Sprites/Cards/Creature/Sips.png"},
+	"Tom": 	 {"Cost": 3, "Attack": 15000, "Defence": 5000, "Type": "Creature", "Can Boost": false, "Trigger": null, "Effect": null, "Sprite": "res://Assets/Sprites/Cards/Creature/Tom.png"},
+	
+	# Spells
+	"Draw": 	 {"Cost": 3, "Attack": null, "Defence": null, "Type": "Spell", "Can Boost": false, "Trigger": null, "Effect": null, "Sprite": "res://Assets/Sprites/Cards/Spells/Draw.png"},
+	"Double Energy": 	 {"Cost": null, "Attack": null, "Defence": null, "Type": "Spell", "Can Boost": false, "Trigger": null, "Effect": null, "Sprite": "res://Assets/Sprites/Cards/Spells/Energy.png"},
+	"Rust": 	 {"Cost": 2, "Attack": null, "Defence": null, "Type": "Spell", "Can Boost": false, "Trigger": null, "Effect": null, "Sprite": "res://Assets/Sprites/Cards/Spells/Rust.png"},
+	
+	# Items
+	"Sword": 	 {"Cost": 2, "Attack": 10000, "Defence": null, "Type": "Equipment", "Can Boost": false, "Trigger": null, "Effect": null, "Sprite": "res://Assets/Sprites/Cards/Items/Sword.png"},
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

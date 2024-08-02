@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bok64w517aaj7"]
+
+[ext_resource type="Script" path="res://Scripts/Deck.gd" id="1_3nv1v"]
+[ext_resource type="Texture2D" uid="uid://cs62upltbonh7" path="res://icon.svg" id="2_gm5ru"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bj8ec"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_3nv1v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gm5ru")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(6.5, 6.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_bj8ec")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -1,26 +1,26 @@
 [gd_scene load_steps=4 format=3 uid="uid://j7yisv3sv737"]
 
 [ext_resource type="Script" path="res://Scripts/global.gd" id="1_rpqcc"]
+[ext_resource type="PackedScene" uid="uid://bok64w517aaj7" path="res://Scenes/Deck.tscn" id="2_y02xi"]
 [ext_resource type="PackedScene" uid="uid://cuk0lgjsw8ov7" path="res://Scenes/card_zone.tscn" id="3_hq7ko"]
-[ext_resource type="PackedScene" uid="uid://dtw6hwiosxeao" path="res://Scenes/inherited_card.tscn" id="3_y63jo"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_rpqcc")
 
 [node name="cardZone" parent="." instance=ExtResource("3_hq7ko")]
-position = Vector2(265, 173)
+position = Vector2(384, 176)
 
 [node name="cardZone2" parent="." instance=ExtResource("3_hq7ko")]
-position = Vector2(621, 178)
+position = Vector2(672, 176)
 
 [node name="cardZone3" parent="." instance=ExtResource("3_hq7ko")]
-position = Vector2(969, 177)
+position = Vector2(960, 176)
 
 [node name="cardZone4" parent="." instance=ExtResource("3_hq7ko")]
-position = Vector2(1355, 180)
+position = Vector2(1248, 176)
 
 [node name="cardZone5" parent="." instance=ExtResource("3_hq7ko")]
-position = Vector2(1695, 179)
+position = Vector2(1536, 176)
 
-[node name="Inherited Card" parent="." instance=ExtResource("3_y63jo")]
-position = Vector2(289, 639)
+[node name="Node2D" parent="." instance=ExtResource("2_y02xi")]
+position = Vector2(1767, 888)
