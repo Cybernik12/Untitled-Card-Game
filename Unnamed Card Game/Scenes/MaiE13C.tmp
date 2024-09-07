@@ -11,7 +11,7 @@ script = ExtResource("1_rpqcc")
 position = Vector2(936, 560)
 texture = ExtResource("2_r6lfd")
 
-[node name="Deck" parent="." instance=ExtResource("2_y02xi")]
-position = Vector2(1800, 960)
-
 [node name="Hand" type="Node" parent="."]
+
+[node name="Node2D" parent="." instance=ExtResource("2_y02xi")]
+position = Vector2(1792, 960)

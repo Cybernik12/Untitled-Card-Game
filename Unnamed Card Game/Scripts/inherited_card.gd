@@ -12,7 +12,7 @@ func _ready():
 	trigger = all_cards[card_selected]["Trigger"]
 	effect = all_cards[card_selected]["Effect"]
 	sprite = all_cards[card_selected]["Sprite"]
-	$Sprite2D.texture = load(sprite)
+	$Card.texture = load(sprite)
 	
 	print(card_selected)
 

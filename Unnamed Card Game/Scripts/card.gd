@@ -44,13 +44,67 @@ var all_cards = {
 	"Sword": 	 {"Cost": 2, "Attack": 10000, "Defence": null, "Type": "Equipment", "Can Boost": false, "Trigger": null, "Effect": null, "Sprite": "res://Assets/Sprites/Cards/Items/Sword.png"},
 }
 
+# Variables for state of cards
+enum {
+	InHand,
+	InPlay,
+	InMouse,
+	FocusInHand,
+	MoveDrawCardToHand,
+	ReOrganiseHand,
+}
+
+var state = InHand
+
+# Variables for draw card animation
+@onready var Orig_Scale = scale.x
+var startpos = Vector2()
+var targetpos = Vector2()
+var startrot = 0
+var targetrot = 0
+var t = 0
+var DRAWTIME = 1
+var ORGANISETIME = 0.5
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _physics_process(delta):
+	match state:
+		InHand:
+			pass
+		InPlay:
+			pass
+		InMouse:
+			pass
+		FocusInHand:
+			pass
+		MoveDrawCardToHand: # Animate from the deck to my hand
+			if t <= 1: # Always be a 1
+				position = startpos.lerp(targetpos, t)
+				rotation = startrot * (1 - t) + targetrot * t
+				scale.x = Orig_Scale * abs(2 * t - 1)
+				if $CardBack.visible:
+					if t >= 0.5:
+						$CardBack.visible = false
+				t += delta/float(DRAWTIME)
+			else:
+				position = targetpos
+				rotation = targetrot
+				state = InHand
+				t = 0
+		ReOrganiseHand:
+			if t <= 1: # Always be a 1
+				position = startpos.lerp(targetpos, t)
+				rotation = startrot * (1 - t) + targetrot * t
+				t += delta/float(ORGANISETIME)
+			else:
+				position = targetpos
+				rotation = targetrot
+				state = InHand
+				t = 0
 
 func _dragNdrop(): # Controls drag and drop functionality
 		if draggable: # Checks to see if the "Card" is draggable

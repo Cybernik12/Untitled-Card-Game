@@ -5,11 +5,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjba3"]
 
 [node name="cardZone" type="StaticBody2D" groups=["dropable"]]
+scale = Vector2(0.6, 0.6)
 script = ExtResource("1_qbrwq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(9.5, 13.25)
-shape = SubResource("RectangleShape2D_jjba3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -95.0
@@ -17,3 +14,15 @@ offset_top = -132.0
 offset_right = 5053.0
 offset_bottom = 7837.0
 scale = Vector2(0.0369021, 0.0331293)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 132.0
+offset_top = -95.0
+offset_right = 5280.0
+offset_bottom = 7874.0
+rotation = 1.5708
+scale = Vector2(0.0369021, 0.0331293)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(13.2477, 13.25)
+shape = SubResource("RectangleShape2D_jjba3")
