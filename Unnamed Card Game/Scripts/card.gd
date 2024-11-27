@@ -17,7 +17,6 @@ var can_boost
 var trigger
 var effect
 var sprite
-
 var all_cards = {
 	# Leader
 	"Joe": 	 {"Cost": null, "Attack": 15000, "Defence": null, "Type": "Leader", "Can Boost": false, "Trigger": null, "Effect": null, "Sprite": "res://Assets/Sprites/Cards/Leader/Leader (Front).png"},
@@ -57,7 +56,9 @@ enum {
 var state = InHand
 
 # Variables for draw card animation
-@onready var Orig_Scale = scale.x
+@onready var card_size = $MarginContainer
+@onready var Orig_Scale = scale
+
 var startpos = Vector2()
 var targetpos = Vector2()
 var startrot = 0
@@ -65,6 +66,16 @@ var targetrot = 0
 var t = 0
 var DRAWTIME = 1
 var ORGANISETIME = 0.5
+
+var setup = true
+var startscale = Vector2()
+var cardpos = Vector2()
+var zoomInSize = 2
+var ZOOMINTIME = 0.2
+var ReorganiseNeighbours = true
+var numberCardsHand = 0
+var Card_Numb = 0
+var NeighbourCard
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -80,15 +91,35 @@ func _physics_process(delta):
 		InMouse:
 			pass
 		FocusInHand:
-			pass
+			if setup:
+				Setup()
+			if t <= 1: # Always be a 1
+				position = startpos.lerp(targetpos, t)
+				rotation = startrot * (1 - t) + targetrot * t
+				scale = startscale * (1 - t) + Orig_Scale * 2 * t
+				t += delta/float(ZOOMINTIME)
+				if ReorganiseNeighbours:
+					ReorganiseNeighbours = false
+					#if Card_Numb - 1 >= 0:
+						#Move_Neighbour_Card(Card_Numb - 1, true, 1) # true is left
+					#if Card_Numb - 2 >= 0:
+						#Move_Neighbour_Card(Card_Numb - 2, true,0.25)
+					#if Card_Numb + 1 <= numberCardsHand:
+						#Move_Neighbour_Card(Card_Numb + 1, false, 1)
+					#if Card_Numb + 2 <= numberCardsHand:
+						#Move_Neighbour_Card(Card_Numb + 2, false, 0.25)
+			else:
+				position = targetpos
+				rotation = targetrot
+				scale = Orig_Scale * 2
 		MoveDrawCardToHand: # Animate from the deck to my hand
 			if t <= 1: # Always be a 1
 				position = startpos.lerp(targetpos, t)
 				rotation = startrot * (1 - t) + targetrot * t
-				scale.x = Orig_Scale * abs(2 * t - 1)
-				if $CardBack.visible:
+				scale.x = Orig_Scale.x * abs(2 * t - 1)
+				if $MarginContainer/CardBack.visible:
 					if t >= 0.5:
-						$CardBack.visible = false
+						$MarginContainer/CardBack.visible = false
 				t += delta/float(DRAWTIME)
 			else:
 				position = targetpos
@@ -96,15 +127,34 @@ func _physics_process(delta):
 				state = InHand
 				t = 0
 		ReOrganiseHand:
+			if setup:
+				Setup()
 			if t <= 1: # Always be a 1
 				position = startpos.lerp(targetpos, t)
 				rotation = startrot * (1 - t) + targetrot * t
+				scale = startscale * (1 - t) + Orig_Scale * t
 				t += delta/float(ORGANISETIME)
 			else:
 				position = targetpos
 				rotation = targetrot
+				scale = Orig_Scale
 				state = InHand
+
+func Move_Neighbour_Card(Card_Numb, Left, Spreadfactor):
+	NeighbourCard = $Hand.get_child(Card_Numb) # Not working, need to find a way to reference the card that is currently zoomed in on.
+	if Left:
+		NeighbourCard.targetpos = NeighbourCard.Cardpos - Spreadfactor * Vector2(65 , 0)
+	else:
+		NeighbourCard.targetpos = NeighbourCard.Cardpos + Spreadfactor * Vector2(65 , 0)
+	NeighbourCard.setup = true
+	NeighbourCard.state = ReOrganiseHand
+
+func Setup():
+				startpos = position
+				startrot = rotation
+				startscale = scale
 				t = 0
+				setup = false
 
 func _dragNdrop(): # Controls drag and drop functionality
 		if draggable: # Checks to see if the "Card" is draggable
@@ -123,14 +173,30 @@ func _dragNdrop(): # Controls drag and drop functionality
 					tween.tween_property(self, "global_position" , initialPos, 0.2).set_ease(Tween.EASE_OUT)
 
 func _on_area_2d_mouse_entered(): # Increases the size of the "Card" when the mouse is over it
-	if not global.is_dragging:
-		draggable = true
-		scale = Vector2(1.05, 1.05)
+	#if not global.is_dragging:
+		#draggable = true
+		#scale = Vector2(1.05, 1.05)
+
+
+	match state:
+		InHand, ReOrganiseHand:
+			setup = true
+			targetrot = 0
+			targetpos = cardpos
+			targetpos.y = (get_viewport().size.y - (card_size.size.y / 2) * zoomInSize) + 2.5
+			state = FocusInHand
 
 func _on_area_2d_mouse_exited(): # Resets the size of the "Card" when the mouse is not over it
-	if not global.is_dragging:
-		draggable = false
-		scale = Vector2(1, 1)	
+	#if not global.is_dragging:
+		#draggable = false
+		#scale = Vector2(1, 1)
+	
+	match state:
+		FocusInHand:
+			setup = true
+			targetpos = cardpos
+			state = ReOrganiseHand
+
 
 func _on_area_2d_body_entered(body:StaticBody2D): # Changes the colour of the "Card Zone" if the "Card" is over it
 	if body.is_in_group('dropable'):

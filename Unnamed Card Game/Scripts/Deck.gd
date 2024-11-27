@@ -1,4 +1,7 @@
 extends Node2D
+class_name deck
+
+var temp = 0
 
 const card_scene = preload("res://Scenes/inherited_card.tscn") 
 
@@ -10,7 +13,6 @@ var full_deck = [
 @onready var deck_size = full_deck.size()
 
 var is_clickable = false
-var temp = 400
 
 # Oval Hand Position
 @onready var CentreCardOval = get_viewport_rect().size * Vector2(0.5, 1.35)
@@ -54,9 +56,12 @@ func draw_card(): # Draws and assigns card selected
 	OvalAngleVector = Vector2(Hor_rad * cos(angle), -Ver_rad * sin(angle))
 	new_card.startpos = $".".position
 	new_card.targetpos = CentreCardOval + OvalAngleVector
+	new_card.cardpos = new_card.targetpos
 	new_card.startrot = 0
 	new_card.targetrot = (PI/2 - angle) / 4
 	new_card.state = MoveDrawCardToHand
+	new_card.numberCardsHand = NumberCardsHand + 1 # offset for zeroth item
+	new_card.Card_Numb = NumberCardsHand
 	card_numb = 0
 
 	for Card in $"../Hand".get_children(): # reorganise hand
@@ -64,9 +69,10 @@ func draw_card(): # Draws and assigns card selected
 		OvalAngleVector = Vector2(Hor_rad * cos(angle), - Ver_rad * sin(angle))
 
 		Card.targetpos = CentreCardOval + OvalAngleVector
+		Card.cardpos = Card.targetpos # Card default position
 		Card.startrot = Card.rotation
 		Card.targetrot = (PI/2 - angle) / 4
-
+		Card.Card_Numb = card_numb
 		card_numb += 1
 
 		if Card.state == InHand:
