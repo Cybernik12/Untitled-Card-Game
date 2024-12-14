@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyvrhrgllgagl"]
+
+[ext_resource type="PackedScene" uid="uid://b3mrg4roiuudb" path="res://Scenes/Cards/card.tscn" id="1_253g3"]
+[ext_resource type="Texture2D" uid="uid://dulhoycdsk6xg" path="res://Assets/Sprites/Cards/Spells/Draw_Face.png" id="2_2shxo"]
+
+[node name="Draw" type="Node2D"]
+
+[node name="Card" parent="." node_paths=PackedStringArray("card_image") instance=ExtResource("1_253g3")]
+card_image = NodePath("../Draw_Face")
+card_cost = 3
+card_name = "Draw / Spell"
+card_effect = "Draw 2 cards."
+card_atk = 0
+card_def = 0
+
+[node name="Draw_Face" type="Sprite2D" parent="."]
+position = Vector2(2, -55)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_2shxo")

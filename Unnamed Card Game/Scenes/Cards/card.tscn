@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3mrg4roiuudb"]
+
+[ext_resource type="Script" path="res://Scripts/card.gd" id="1_gvevd"]
+[ext_resource type="Texture2D" uid="uid://nk7usbha3yxw" path="res://Assets/Sprites/Cards/Card Layout.png" id="2_ebvqe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0m6u7"]
+font_size = 90
+font_color = Color(0, 0, 0, 1)
+
+[node name="Card" type="Node2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_gvevd")
+
+[node name="BaseCardSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ebvqe")
+
+[node name="CardImage" type="Node2D" parent="."]
+
+[node name="CardImageSprite" type="Sprite2D" parent="CardImage"]
+position = Vector2(9, -550)
+
+[node name="CostDisplay" type="Node2D" parent="."]
+position = Vector2(-901, -1281)
+
+[node name="CostLbl" type="Label" parent="CostDisplay"]
+offset_right = 193.0
+offset_bottom = 191.0
+text = "1"
+label_settings = SubResource("LabelSettings_0m6u7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameDisplay" type="Node2D" parent="."]
+position = Vector2(-800, 125)
+
+[node name="NameLbl" type="Label" parent="NameDisplay"]
+offset_right = 1603.0
+offset_bottom = 172.0
+text = "Charlie / Creature / Critical / Boost "
+label_settings = SubResource("LabelSettings_0m6u7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EffectDisplay" type="Node2D" parent="."]
+position = Vector2(-800, 331)
+
+[node name="EffectLbl" type="Label" parent="EffectDisplay"]
+offset_right = 1602.0
+offset_bottom = 618.0
+text = " No Effect.
+ "
+label_settings = SubResource("LabelSettings_0m6u7")
+
+[node name="AttackDisplay" type="Node2D" parent="."]
+position = Vector2(-882, 1044)
+
+[node name="AtkLbl" type="Label" parent="AttackDisplay"]
+offset_right = 603.0
+offset_bottom = 180.0
+text = "Atk: 5000"
+label_settings = SubResource("LabelSettings_0m6u7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefenceDisplay" type="Node2D" parent="."]
+position = Vector2(284, 1043)
+
+[node name="DefLbl" type="Label" parent="DefenceDisplay"]
+offset_right = 603.0
+offset_bottom = 180.0
+text = "Def: 10000"
+label_settings = SubResource("LabelSettings_0m6u7")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,4 +1,4 @@
-extends Card
+extends Card_old
 
 var card_selected
 
