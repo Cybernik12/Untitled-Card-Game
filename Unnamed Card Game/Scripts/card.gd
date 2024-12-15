@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 class_name Card
 
@@ -20,7 +21,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	_update_graphics()
 
 func set_card_values(_cost: int, _name: String, _effect: String, _atk: int, _def: int):
 	
@@ -30,8 +31,19 @@ func set_card_values(_cost: int, _name: String, _effect: String, _atk: int, _def
 	card_atk = _atk
 	card_def = _def
 	
-	cost_lbl.set_text(str(_cost))
-	name_lbl.set_text(_name)
-	effect_lbl.set_text(_effect)
-	atk_lbl.set_text("Atk: " + str(_atk))
-	def_lbl.set_text("Def: " + str(_def))
+	_update_graphics()
+
+
+# grphics components updates to match the date
+func _update_graphics():
+	if cost_lbl.get_text() != str(card_cost):
+		cost_lbl.set_text(str(card_cost))
+	if name_lbl.get_text() != card_name:
+		name_lbl.set_text(card_name)
+	if effect_lbl.get_text() != card_effect:
+		effect_lbl.set_text(card_effect)
+	if atk_lbl.get_text() != "Atk: " + str(card_atk):
+		atk_lbl.set_text("Atk: " + str(card_atk))
+	if def_lbl.get_text() != "Def: " + str(card_def):
+		def_lbl.set_text("Def: " + str(card_def))
+

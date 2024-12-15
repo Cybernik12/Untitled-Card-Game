@@ -14,6 +14,6 @@ card_atk = 0
 card_def = 0
 
 [node name="Draw_Face" type="Sprite2D" parent="."]
-position = Vector2(2, -55)
+position = Vector2(2, -50)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_2shxo")

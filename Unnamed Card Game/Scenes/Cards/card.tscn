@@ -36,7 +36,7 @@ position = Vector2(-800, 125)
 [node name="NameLbl" type="Label" parent="NameDisplay"]
 offset_right = 1603.0
 offset_bottom = 172.0
-text = "Charlie / Creature / Critical / Boost "
+text = "Charlie / Creature / Critical / Boost"
 label_settings = SubResource("LabelSettings_0m6u7")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -47,8 +47,7 @@ position = Vector2(-800, 331)
 [node name="EffectLbl" type="Label" parent="EffectDisplay"]
 offset_right = 1602.0
 offset_bottom = 618.0
-text = " No Effect.
- "
+text = " No Effect."
 label_settings = SubResource("LabelSettings_0m6u7")
 
 [node name="AttackDisplay" type="Node2D" parent="."]
