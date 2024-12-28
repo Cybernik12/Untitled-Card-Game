@@ -7,11 +7,11 @@
 script = ExtResource("1_ttgnl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="Hand" parent="CanvasLayer" instance=ExtResource("2_q62dx")]
-position = Vector2(480, 1450)
-angle_limit = 25.0
-max_card_spread_angle = 5.0
+position = Vector2(576, 1600)
+hand_radius = 1000
 
 [node name="Button" type="Button" parent="."]
 offset_right = 8.0

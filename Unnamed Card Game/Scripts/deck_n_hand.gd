@@ -9,16 +9,13 @@ extends Node2D
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-
 func _on_button_pressed():
 	var charlie_card = charlie_card_scene.instantiate()
 	hand.add_card(charlie_card)
-
 
 func _on_button_2_pressed():
 	var draw_card = draw_card_scene.instantiate()

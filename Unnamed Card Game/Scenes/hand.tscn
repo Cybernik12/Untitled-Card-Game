@@ -8,8 +8,6 @@ radius = 1000.0
 
 [node name="Hand" type="Node2D"]
 script = ExtResource("1_ahpnb")
-angle_limit = null
-max_card_spread_angle = null
 
 [node name="TestCard" parent="." instance=ExtResource("2_o5jv7")]
 visible = false

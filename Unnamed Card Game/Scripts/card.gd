@@ -2,6 +2,9 @@
 extends Node2D
 class_name Card
 
+signal mouse_entered(card: Card)
+signal mouse_exited(card: Card)
+
 @export var card_image: Sprite2D
 @export var card_cost: int = 1
 @export var card_name: String = "Charlie / Creature / Critical / Boost"
@@ -14,6 +17,8 @@ class_name Card
 @onready var effect_lbl: Label = $EffectDisplay/EffectLbl
 @onready var atk_lbl: Label = $AttackDisplay/AtkLbl
 @onready var def_lbl: Label = $DefenceDisplay/DefLbl
+
+@onready var base_sprite: Sprite2D = $BaseCardSprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,3 +52,14 @@ func _update_graphics():
 	if def_lbl.get_text() != "Def: " + str(card_def):
 		def_lbl.set_text("Def: " + str(card_def))
 
+func highlight():
+	base_sprite.set_modulate(Color(0.5, 1, 1, 1))
+
+func unhighlight():
+	base_sprite.set_modulate(Color(1, 1, 1, 1))
+
+func _on_area_2d_mouse_entered():
+	mouse_entered.emit(self)
+
+func _on_area_2d_mouse_exited():
+	mouse_exited.emit(self)
