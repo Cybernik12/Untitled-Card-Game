@@ -2,6 +2,8 @@
 extends Node2D
 class_name Hand
 
+signal card_activated(card: UsableCard)
+
 @export var hand_radius: int = 1000
 @export var card_angle: float = -90
 @export var angle_limit: float = 25
@@ -21,6 +23,7 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("mouse_click") && current_selected_card_index >= 0:
 		var card = remove_card((current_selected_card_index))
+		card_activated.emit(card)
 		current_selected_card_index = -1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

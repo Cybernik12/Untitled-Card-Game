@@ -1,21 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://j7yisv3sv737"]
+[gd_scene load_steps=4 format=3 uid="uid://bhpcuiyijip8g"]
 
-[ext_resource type="Script" path="res://Scripts/global.gd" id="1_rpqcc"]
-[ext_resource type="Texture2D" uid="uid://bvixiegp4uav5" path="res://Assets/Sprites/Background/Untitled.png" id="2_r6lfd"]
-[ext_resource type="PackedScene" uid="uid://bok64w517aaj7" path="res://Scenes/Deck.tscn" id="2_y02xi"]
-[ext_resource type="PackedScene" uid="uid://b3mrg4roiuudb" path="res://Scenes/Cards/card.tscn" id="4_aegea"]
+[ext_resource type="PackedScene" uid="uid://bq2j88vh8tfr1" path="res://Scenes/deck_n_hand.tscn" id="1_l4uae"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_ujwgo"]
+[ext_resource type="Script" path="res://Scripts/Player1.gd" id="3_alyst"]
 
-[node name="Node" type="Node"]
-script = ExtResource("1_rpqcc")
+[node name="main" type="Node2D"]
+script = ExtResource("1_ujwgo")
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(936, 560)
-texture = ExtResource("2_r6lfd")
+[node name="ManaAmount" type="Label" parent="."]
+offset_left = 178.0
+offset_top = 61.0
+offset_right = 218.0
+offset_bottom = 84.0
+text = "10"
 
-[node name="Deck" parent="." instance=ExtResource("2_y02xi")]
-position = Vector2(1036, 505)
+[node name="DeckNHand" parent="." instance=ExtResource("1_l4uae")]
 
-[node name="Hand" type="Node" parent="."]
+[node name="GameScreen" type="Node2D" parent="."]
 
-[node name="Card" parent="." instance=ExtResource("4_aegea")]
-position = Vector2(241, 351)
+[node name="Gameboard" type="Node2D" parent="GameScreen"]
+
+[node name="Player1" type="Node2D" parent="GameScreen"]
+position = Vector2(0, -1)
+script = ExtResource("3_alyst")
+
+[node name="Player2" type="Node2D" parent="GameScreen"]
+
+[connection signal="card_activated" from="DeckNHand" to="." method="_on_deck_n_hand_card_activated"]

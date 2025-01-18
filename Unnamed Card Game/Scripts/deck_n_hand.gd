@@ -1,9 +1,11 @@
 extends Node2D
 
+signal card_activated(card: UsableCard)
+
 @onready var charlie_card_scene: PackedScene = preload("res://Scenes/Cards/charlie.tscn")
 @onready var draw_card_scene: PackedScene = preload("res://Scenes/Cards/draw.tscn")
 
-@onready var hand: Hand = $CanvasLayer/Hand
+@onready var hand: Hand = $Hand
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,3 +22,6 @@ func _on_button_pressed():
 func _on_button_2_pressed():
 	var draw_card = draw_card_scene.instantiate()
 	hand.add_card(draw_card)
+
+func _on_hand_card_activated(card):
+	card_activated.emit(card)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://j7yisv3sv737"]
+
+[ext_resource type="Script" path="res://Scripts/global.gd" id="1_rpqcc"]
+[ext_resource type="Texture2D" uid="uid://bvixiegp4uav5" path="res://Assets/Sprites/Background/Untitled.png" id="2_r6lfd"]
+[ext_resource type="PackedScene" uid="uid://bok64w517aaj7" path="res://Scenes/Deck.tscn" id="2_y02xi"]
+[ext_resource type="PackedScene" uid="uid://b3mrg4roiuudb" path="res://Scenes/Cards/card.tscn" id="4_aegea"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_rpqcc")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(936, 560)
+texture = ExtResource("2_r6lfd")
+
+[node name="Deck" parent="." instance=ExtResource("2_y02xi")]
+position = Vector2(1036, 505)
+
+[node name="Hand" type="Node" parent="."]
+
+[node name="Card" parent="." instance=ExtResource("4_aegea")]
+position = Vector2(241, 351)
