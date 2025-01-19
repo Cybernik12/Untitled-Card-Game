@@ -1,4 +1,5 @@
 extends Node2D
+class_name Deck_n_Hand
 
 signal card_activated(card: UsableCard)
 
@@ -14,6 +15,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func Draw():
+	var charlie_card = charlie_card_scene.instantiate()
+	hand.add_card(charlie_card)
 
 func _on_button_pressed():
 	var charlie_card = charlie_card_scene.instantiate()

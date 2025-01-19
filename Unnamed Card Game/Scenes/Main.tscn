@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhpcuiyijip8g"]
+[gd_scene load_steps=5 format=3 uid="uid://bhpcuiyijip8g"]
 
 [ext_resource type="PackedScene" uid="uid://bq2j88vh8tfr1" path="res://Scenes/deck_n_hand.tscn" id="1_l4uae"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_ujwgo"]
+[ext_resource type="Script" path="res://Scripts/GameState.gd" id="3_721sy"]
 [ext_resource type="Script" path="res://Scripts/Player1.gd" id="3_alyst"]
 
 [node name="main" type="Node2D"]
@@ -16,7 +17,9 @@ text = "10"
 
 [node name="DeckNHand" parent="." instance=ExtResource("1_l4uae")]
 
-[node name="GameScreen" type="Node2D" parent="."]
+[node name="GameScreen" type="Node2D" parent="." node_paths=PackedStringArray("deck_n_hand")]
+script = ExtResource("3_721sy")
+deck_n_hand = NodePath("../DeckNHand")
 
 [node name="Gameboard" type="Node2D" parent="GameScreen"]
 
@@ -26,4 +29,12 @@ script = ExtResource("3_alyst")
 
 [node name="Player2" type="Node2D" parent="GameScreen"]
 
+[node name="Button3" type="Button" parent="GameScreen"]
+offset_left = 2.0
+offset_top = 85.0
+offset_right = 98.0
+offset_bottom = 116.0
+text = "Next Phase"
+
 [connection signal="card_activated" from="DeckNHand" to="." method="_on_deck_n_hand_card_activated"]
+[connection signal="pressed" from="GameScreen/Button3" to="GameScreen" method="_on_button_3_pressed"]

@@ -23,9 +23,9 @@ position = Vector2(2, -50)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_2shxo")
 
-[node name="AttackAction" type="Node2D" parent="."]
+[node name="AttackAction" type="Node2D" parent="." node_paths=PackedStringArray("card")]
 script = ExtResource("4_kaq13")
-mana = 3
+card = NodePath("../Card")
 
 [node name="DefendAction" type="Node2D" parent="."]
 script = ExtResource("4_qippu")

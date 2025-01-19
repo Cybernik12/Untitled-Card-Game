@@ -1,6 +1,8 @@
 extends Node2D
 
-@export var mana: int = 1
+@export var card: Card
+
+@onready var mana: int = card.card_cost
 
 func activate(game_state: Dictionary):
 	# Spend Cost
