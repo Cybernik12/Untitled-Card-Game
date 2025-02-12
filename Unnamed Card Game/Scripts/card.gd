@@ -5,6 +5,13 @@ class_name Card
 signal mouse_entered(card: Card)
 signal mouse_exited(card: Card)
 
+# Drag and Drop Variables
+var draggable = false
+var is_inside_dropable = false
+var body_ref
+var offset: Vector2
+var initialPos: Vector2
+
 @export var card_image: Sprite2D
 @export var card_cost: int = 1
 @export var card_name: String = "Charlie / Creature / Critical / Boost"
@@ -26,7 +33,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	_update_graphics()
+	#_update_graphics()
+	pass
 
 func set_card_values(_cost: int, _name: String, _effect: String, _atk: int, _def: int):
 	
@@ -37,7 +45,6 @@ func set_card_values(_cost: int, _name: String, _effect: String, _atk: int, _def
 	card_def = _def
 	
 	_update_graphics()
-
 
 # grphics components updates to match the date
 func _update_graphics():
@@ -59,7 +66,25 @@ func unhighlight():
 	base_sprite.set_modulate(Color(1, 1, 1, 1))
 
 func _on_area_2d_mouse_entered():
+	draggable = true
 	mouse_entered.emit(self)
 
 func _on_area_2d_mouse_exited():
+	draggable = false
 	mouse_exited.emit(self)
+
+func _dragNdrop(): # Controls drag and drop functionality
+		if draggable: # Checks to see if the "Card" is draggable
+			if Input.is_action_just_pressed("click"):
+				initialPos = global_position
+				offset = get_global_mouse_position() - global_position
+				global.is_dragging = true
+			if Input.is_action_pressed("click"):
+				global_position = get_global_mouse_position() - offset
+			elif Input.is_action_just_released("click"):
+				global.is_dragging = false
+				var tween = get_tree().create_tween()
+				if is_inside_dropable:
+					tween.tween_property(self, "position" , body_ref.position, 0.2).set_ease(Tween.EASE_OUT)
+				else:
+					tween.tween_property(self, "global_position" , initialPos, 0.2).set_ease(Tween.EASE_OUT)

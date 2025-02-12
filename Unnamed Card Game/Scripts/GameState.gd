@@ -20,8 +20,7 @@ var game_phase = Phase.Setup
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(game_phase)
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -42,6 +41,7 @@ func Game_Phase_Controller():
 			game_phase = Phase.End
 		Phase.End: # Turn ends, then it becomes your opponents turn.
 			game_phase = Phase.Defend
+
 		#On Opponents Turn.
 		Phase.Defend: # You can defend an attack.
 			game_phase = Phase.Damage
@@ -52,5 +52,26 @@ func _draw():
 	deck_n_hand.Draw()
 
 func _on_button_3_pressed():
+	var temp
+	match game_phase:
+		0: # All cards are unrested.
+			temp = "Setup"
+		1: # You draw a card from your deck.
+			temp = "Draw"
+		2: # You can add a card from hand into your Energy area.
+			temp = "Energy"
+		3: # You can use your energy to play a card.
+			temp = "Play"
+		4: # You can attack with your cards.
+			temp = "Attack"
+		5: # Turn ends, then it becomes your opponents turn.
+			temp = "End"
+
+		#On Opponents Turn.
+		6: # You can defend an attack.
+			temp = "Defend"
+		7: # If the attack was succesful, you take damage.
+			temp = "Damage"
+	print(temp)
+	
 	Game_Phase_Controller()
-	print(game_phase)

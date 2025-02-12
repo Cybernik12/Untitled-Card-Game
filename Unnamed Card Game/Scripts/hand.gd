@@ -21,7 +21,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _input(event):
-	if event.is_action_pressed("mouse_click") && current_selected_card_index >= 0:
+	if event.is_action_pressed("mouse_click") && current_selected_card_index >= 0 && isPlayable == true:
 		var card = remove_card((current_selected_card_index))
 		card_activated.emit(card)
 		current_selected_card_index = -1

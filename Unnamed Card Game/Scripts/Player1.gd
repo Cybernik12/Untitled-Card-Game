@@ -7,13 +7,15 @@ class_name Player1
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 func spend_mana(amount: int):
 	mana -= amount
+
+func return_mana():
+	return mana
 
 func take_damage():
 	pass

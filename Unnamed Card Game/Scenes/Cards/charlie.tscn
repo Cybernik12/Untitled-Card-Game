@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bh461j860p5f1"]
+[gd_scene load_steps=6 format=3 uid="uid://bh461j860p5f1"]
 
 [ext_resource type="Script" path="res://Scripts/Cards_Scripts/usablecard.gd" id="1_5l25s"]
 [ext_resource type="PackedScene" uid="uid://b3mrg4roiuudb" path="res://Scenes/Cards/card.tscn" id="1_35tm6"]
 [ext_resource type="Texture2D" uid="uid://bmj8k0r1ygma7" path="res://Assets/Sprites/Cards/Creature/Charley_Face.png" id="2_sar46"]
 [ext_resource type="Script" path="res://Scripts/Cards_Scripts/AttackAction.gd" id="4_bdtgx"]
+[ext_resource type="Script" path="res://Scripts/CharacterFunc.gd" id="5_l7rkq"]
 
 [node name="Charlie" type="Node2D" node_paths=PackedStringArray("action")]
 script = ExtResource("1_5l25s")
@@ -20,6 +21,9 @@ texture = ExtResource("2_sar46")
 [node name="AttackAction" type="Node2D" parent="." node_paths=PackedStringArray("card")]
 script = ExtResource("4_bdtgx")
 card = NodePath("../Card")
+
+[node name="CharacterFunc" type="Node2D" parent="."]
+script = ExtResource("5_l7rkq")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

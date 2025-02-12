@@ -7,5 +7,5 @@ extends Node2D
 func activate(game_state: Dictionary):
 	# Spend Cost
 	game_state.get("caster").spend_mana(mana)
-	# Damage 1
+	# Play Effect
 	pass
