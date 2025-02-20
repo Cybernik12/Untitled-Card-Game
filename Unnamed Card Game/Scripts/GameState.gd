@@ -1,6 +1,9 @@
 extends Node2D
+class_name GameState
 
 @export var deck_n_hand: Deck_n_Hand
+
+var is_running: bool = true
 
 enum Phase {
 	# On players turn.
@@ -17,14 +20,6 @@ enum Phase {
 }
 
 var game_phase = Phase.Setup
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func Game_Phase_Controller():
 	match game_phase:
@@ -48,8 +43,11 @@ func Game_Phase_Controller():
 		Phase.Damage: # If the attack was succesful, you take damage.
 			game_phase = Phase.Setup
 
-func _draw():
-	deck_n_hand.Draw()
+func Pause():
+	is_running = false
+
+func UnPause():
+	is_running = true	
 
 func _on_button_3_pressed():
 	var temp

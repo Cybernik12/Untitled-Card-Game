@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://ot0n7lo7bx0c"]
+
+[ext_resource type="Script" path="res://Scripts/UI/deck_view_window.gd" id="1_28vc6"]
+
+[node name="DeckViewWindow" type="ScrollContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -406.0
+offset_top = -276.0
+offset_right = 406.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+script = ExtResource("1_28vc6")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3

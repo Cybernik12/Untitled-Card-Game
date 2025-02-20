@@ -1,15 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyvrhrgllgagl"]
+[gd_scene load_steps=5 format=3 uid="uid://dyvrhrgllgagl"]
 
 [ext_resource type="Script" path="res://Scripts/Cards_Scripts/usablecard.gd" id="1_3ji34"]
 [ext_resource type="PackedScene" uid="uid://b3mrg4roiuudb" path="res://Scenes/Cards/card.tscn" id="1_253g3"]
 [ext_resource type="Texture2D" uid="uid://dulhoycdsk6xg" path="res://Assets/Sprites/Cards/Spells/Draw_Face.png" id="2_2shxo"]
-[ext_resource type="Script" path="res://Scripts/Cards_Scripts/AttackAction.gd" id="4_kaq13"]
-[ext_resource type="Script" path="res://Scripts/Cards_Scripts/DefendAction.gd" id="4_qippu"]
-[ext_resource type="Script" path="res://Scripts/SpellFunc.gd" id="6_75q7i"]
+[ext_resource type="Script" path="res://Scripts/Cards_Scripts/Draw_Effect.gd" id="4_bax2r"]
 
-[node name="Draw" type="Node2D" node_paths=PackedStringArray("action")]
+[node name="Draw" type="Node2D" node_paths=PackedStringArray("action", "card")]
 script = ExtResource("1_3ji34")
-action = NodePath("SpellFunc")
+action = NodePath("Draw_Effect")
+card = NodePath("Card")
 
 [node name="Card" parent="." node_paths=PackedStringArray("card_image") instance=ExtResource("1_253g3")]
 card_image = NodePath("../Draw_Face")
@@ -24,16 +23,8 @@ position = Vector2(2, -50)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_2shxo")
 
-[node name="AttackAction" type="Node2D" parent="." node_paths=PackedStringArray("card")]
-script = ExtResource("4_kaq13")
-card = NodePath("../Card")
-
-[node name="DefendAction" type="Node2D" parent="." node_paths=PackedStringArray("card")]
-script = ExtResource("4_qippu")
-card = NodePath("../Card")
-
-[node name="SpellFunc" type="Node2D" parent="." node_paths=PackedStringArray("card")]
-script = ExtResource("6_75q7i")
+[node name="Draw_Effect" type="Node2D" parent="." node_paths=PackedStringArray("card")]
+script = ExtResource("4_bax2r")
 card = NodePath("../Card")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

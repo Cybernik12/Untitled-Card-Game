@@ -4,6 +4,8 @@ class_name Hand
 
 signal card_activated(card: UsableCard)
 
+@export var deck_n_hand: Deck_n_Hand
+
 @export var hand_radius: int = 1000
 @export var card_angle: float = -90
 @export var angle_limit: float = 25
@@ -21,10 +23,15 @@ func _ready():
 	pass # Replace with function body.
 
 func _input(event):
-	if event.is_action_pressed("mouse_click") && current_selected_card_index >= 0 && isPlayable == true:
-		var card = remove_card((current_selected_card_index))
-		card_activated.emit(card)
-		current_selected_card_index = -1
+	if event.is_action_pressed("mouse_click") && current_selected_card_index >= 0:
+		var card = hand[current_selected_card_index]
+		var stats = card._get_card_stats(); # 0 = cost, 1 = name, 2 = effect, 3 = atk, 4 = def
+		var p1_mana = deck_n_hand.player1.mana
+		
+		if stats[0] <= p1_mana:
+			remove_card((current_selected_card_index))
+			card_activated.emit(card)
+			current_selected_card_index = -1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

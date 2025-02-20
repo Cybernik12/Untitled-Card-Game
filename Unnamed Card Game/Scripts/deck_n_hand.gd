@@ -3,6 +3,9 @@ class_name Deck_n_Hand
 
 signal card_activated(card: UsableCard)
 
+@export var player1: Player1
+@export var deck: Deck
+
 @onready var charlie_card_scene: PackedScene = preload("res://Scenes/Cards/charlie.tscn")
 @onready var draw_card_scene: PackedScene = preload("res://Scenes/Cards/draw.tscn")
 
@@ -16,17 +19,21 @@ func _ready():
 func _process(delta):
 	pass
 
-func Draw():
-	var charlie_card = charlie_card_scene.instantiate()
-	hand.add_card(charlie_card)
-
 func _on_button_pressed():
 	var charlie_card = charlie_card_scene.instantiate()
-	hand.add_card(charlie_card)
+	deck.add_card(charlie_card)
 
 func _on_button_2_pressed():
 	var draw_card = draw_card_scene.instantiate()
-	hand.add_card(draw_card)
+	deck.add_card(draw_card)
 
 func _on_hand_card_activated(card):
 	card_activated.emit(card)
+
+func _on_delete_card_pressed():
+	if deck.get_cards().is_empty():
+		return
+	
+	var random_card: CardWithID = deck.get_cards().pick_random()
+	deck.remove_card(random_card.id)
+	pass # Replace with function body.

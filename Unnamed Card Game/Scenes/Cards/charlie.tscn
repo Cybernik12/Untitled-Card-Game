@@ -6,9 +6,9 @@
 [ext_resource type="Script" path="res://Scripts/Cards_Scripts/AttackAction.gd" id="4_bdtgx"]
 [ext_resource type="Script" path="res://Scripts/CharacterFunc.gd" id="5_l7rkq"]
 
-[node name="Charlie" type="Node2D" node_paths=PackedStringArray("action")]
+[node name="Charlie" type="Node2D" node_paths=PackedStringArray("card")]
 script = ExtResource("1_5l25s")
-action = NodePath("AttackAction")
+card = NodePath("Card")
 
 [node name="Card" parent="." node_paths=PackedStringArray("card_image") instance=ExtResource("1_35tm6")]
 card_image = NodePath("../Sprite2D")

@@ -1,5 +1,5 @@
 extends Node2D
-class_name deck
+class_name deck_old
 
 var temp = 0
 
