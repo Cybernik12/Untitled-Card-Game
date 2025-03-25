@@ -73,3 +73,44 @@ func _on_button_3_pressed():
 	print(temp)
 	
 	Game_Phase_Controller()
+
+func Setup():
+	# Stand all the characters on the field
+	# Activate any Setup Effects
+	pass
+
+func Draw():
+	# Draw 5 cards in starting hand if it is the starting turn
+	# Be able to muligan once if it is the starting turn
+	# Draw 1 card at the start of your turn
+	pass
+
+func Energy():
+	# Allow the player to choose a card in hand to put into their energy area
+	pass
+
+func Play():
+	# Allow the player to play character cards from their hand, depending on cost
+	# Activate effects of the characters when conditions are met eg. "On Play", "Activate Main"
+	# Be able to declare an attack
+	pass
+
+func Attack():
+	# Rest attacking character/leader
+	# Choose target of attack
+	# Move onto Defend/Damage Phase
+	pass
+
+func Defend():
+	# Activate Defender to redirect attack
+	# Use cards in hand to block attacks
+	pass
+
+func Damage():
+	# Take the top card of life and put it into the damage zone
+	# If the card has a trigger, activate the trigger effect
+	pass
+
+func End():
+	# End the turn to the next player
+	pass
