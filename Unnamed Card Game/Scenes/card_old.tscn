@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://coiuojm6o1c8b"]
 
-[ext_resource type="Script" path="res://Scripts/card_old.gd" id="1_0r35x"]
+[ext_resource type="Script" path="res://Scripts/Archive/card_old.gd" id="1_0r35x"]
 [ext_resource type="Texture2D" uid="uid://bgigd0n0g7yyg" path="res://Assets/Sprites/Cards/Creature/Charley.png" id="2_ulwqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_igfsc"]

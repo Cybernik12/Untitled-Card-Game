@@ -26,7 +26,7 @@ func Game_Phase_Controller():
 		Phase.Setup: # All cards are unrested.
 			game_phase = Phase.Draw
 		Phase.Draw: # You draw a card from your deck.
-			_draw()
+			# _draw()
 			game_phase = Phase.Energy
 		Phase.Energy: # You can add a card from hand into your Energy area.
 			game_phase = Phase.Play

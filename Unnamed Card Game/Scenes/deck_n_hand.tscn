@@ -10,12 +10,12 @@ script = ExtResource("1_ttgnl")
 position = Vector2(576, 1600)
 deck_n_hand = NodePath("..")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." groups=["Debug"]]
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Create Card 1"
 
-[node name="Button2" type="Button" parent="."]
+[node name="Button2" type="Button" parent="." groups=["Debug"]]
 offset_top = 39.0
 offset_right = 113.0
 offset_bottom = 70.0

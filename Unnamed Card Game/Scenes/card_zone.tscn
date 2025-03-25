@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cuk0lgjsw8ov7"]
 
-[ext_resource type="Script" path="res://Scripts/cardZone.gd" id="1_qbrwq"]
+[ext_resource type="Script" path="res://Scripts/Archive/cardZone.gd" id="1_qbrwq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjba3"]
 

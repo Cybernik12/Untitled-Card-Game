@@ -3,6 +3,15 @@ class_name Deck_n_Hand
 
 signal card_activated(card: UsableCard)
 
+@export var debug_mode: bool = true:
+	set(value):
+		if !is_node_ready():
+			await ready
+		debug_mode = value
+		$Button.visible = debug_mode
+		$Button2.visible = debug_mode
+
+
 @export var player1: Player1
 @export var deck: Deck
 
