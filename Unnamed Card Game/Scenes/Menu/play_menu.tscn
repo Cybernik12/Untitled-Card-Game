@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqh6bv3xwrerc"]
+
+[ext_resource type="Script" path="res://Scripts/Menu/play_menu.gd" id="1_oe4vo"]
+
+[node name="Play Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oe4vo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Online Random" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Online Random"
+
+[node name="Online Private" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Online Private"
+
+[node name="VS AI" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "VS AI"
+
+[node name="Story Mode" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Story Mode
+"
+
+[node name="Challenge Mode" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Challenge Mode"
+
+[connection signal="pressed" from="VBoxContainer/Online Random" to="." method="_on_online_random_pressed"]
+[connection signal="pressed" from="VBoxContainer/Online Private" to="." method="_on_online_private_pressed"]
+[connection signal="pressed" from="VBoxContainer/VS AI" to="." method="_on_vs_ai_pressed"]
+[connection signal="pressed" from="VBoxContainer/Story Mode" to="." method="_on_story_mode_pressed"]
+[connection signal="pressed" from="VBoxContainer/Challenge Mode" to="." method="_on_challenge_mode_pressed"]
