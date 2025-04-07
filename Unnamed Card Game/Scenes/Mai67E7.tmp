@@ -67,7 +67,6 @@ offset_bottom = 39.0
 text = "Start New Game"
 
 [node name="PlayableDeckUi" parent="." instance=ExtResource("6_btuo1")]
-visible = false
 offset_left = 1.0
 offset_top = 221.0
 offset_right = 501.0

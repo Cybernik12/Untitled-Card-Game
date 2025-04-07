@@ -35,14 +35,19 @@ func _on_deck_n_hand_card_activated(card: UsableCard):
 	}, deck_n_hand)
 
 func _on_show_deck_pressed():
-	gameState.Pause()
-	deck_view_window.visible = true
-	deck_view_window.display_card_list(deck.get_cards())
+	if deck_view_window.visible:
+		deck_view_window.visible = false
+		gameState.UnPause()
+	else:
+		gameState.Pause()
+		deck_view_window.visible = true
+		deck_view_window.display_card_list(deck.get_cards())
 
 func _on_start_new_game_pressed():
-	pass # Replace with function body.
+	deck_ui.deck = deck.get_playable_deck()
+	deck_ui.visible = true
 
 func _on_playable_deck_ui_pressed():
 	var card_with_id = deck_ui.draw()
-	deck_n_hand.add_card(card_with_id)
-	pass # Replace with function body.
+	if card_with_id:
+		deck_n_hand.add_card(card_with_id)

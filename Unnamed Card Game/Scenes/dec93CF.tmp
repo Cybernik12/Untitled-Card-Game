@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq2j88vh8tfr1"]
+
+[ext_resource type="Script" path="res://Scripts/deck_n_hand.gd" id="1_ttgnl"]
+[ext_resource type="PackedScene" uid="uid://cblb2s4cj5ey8" path="res://Scenes/hand.tscn" id="2_q62dx"]
+
+[node name="DeckNHand" type="Node2D"]
+script = ExtResource("1_ttgnl")
+
+[node name="Hand" parent="." node_paths=PackedStringArray("deck_n_hand") instance=ExtResource("2_q62dx")]
+position = Vector2(576, 1600)
+deck_n_hand = NodePath("..")
+
+[node name="Button" type="Button" parent="." groups=["Debug"]]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Create Card 1"
+
+[node name="Button2" type="Button" parent="." groups=["Debug"]]
+offset_top = 39.0
+offset_right = 113.0
+offset_bottom = 70.0
+text = "Create Card 2
+"
+
+[connection signal="card_activated" from="Hand" to="." method="_on_hand_card_activated"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
