@@ -28,6 +28,10 @@ func _ready():
 func _process(delta):
 	pass
 
+func add_card(card_with_id: CardWithID):
+	$Hand.add_card(card_with_id.card)
+	pass
+
 func _on_button_pressed():
 	var charlie_card = charlie_card_scene.instantiate()
 	deck.add_card(charlie_card)

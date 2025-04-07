@@ -14,8 +14,8 @@ signal card_activated(card: UsableCard)
 @onready var test_card = $TestCard
 @onready var collision_shape: CollisionShape2D = $DebugShape
 
-var hand: Array = []
-var touched: Array = []
+var hand: Array[UsableCard] = []
+var touched: Array[UsableCard] = []
 var current_selected_card_index: int = -1
 
 # Called when the node enters the scene tree for the first time.
@@ -59,7 +59,7 @@ func get_card_position(angle_in_deg: float) -> Vector2:
 	
 	return Vector2(x, y)
 
-func add_card(card: Node2D):
+func add_card(card: UsableCard):
 	hand.push_back(card)
 	add_child(card)
 	card.mouse_entered.connect(_handle_card_touched)
@@ -74,6 +74,10 @@ func remove_card(index: int) -> Node2D:
 	reposition_cards()
 	return removing_card
 
+func remove_card_by_entity(card: UsableCard):
+	var remove_index = hand.find(card)
+	remove_card(remove_index)
+
 func reposition_cards():
 	var card_spread = min(angle_limit / hand.size(), max_card_spread_angle)
 	var current_angle = -(card_spread * (hand.size() - 1)) / 2 - 90
@@ -81,7 +85,7 @@ func reposition_cards():
 		_update_card_transform(card, current_angle)
 		current_angle += card_spread
 
-func _update_card_transform(card: Node2D, angle_in_drag: float):
+func _update_card_transform(card: UsableCard, angle_in_drag: float):
 	card.set_position(get_card_position(angle_in_drag))
 	card.set_rotation(deg_to_rad(angle_in_drag + 90))
 

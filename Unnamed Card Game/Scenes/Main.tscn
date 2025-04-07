@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhpcuiyijip8g"]
+[gd_scene load_steps=7 format=3 uid="uid://bhpcuiyijip8g"]
 
 [ext_resource type="PackedScene" uid="uid://bq2j88vh8tfr1" path="res://Scenes/deck_n_hand.tscn" id="1_l4uae"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_ujwgo"]
 [ext_resource type="Script" path="res://Scripts/GameState.gd" id="3_721sy"]
 [ext_resource type="Script" path="res://Scripts/Player1.gd" id="3_alyst"]
 [ext_resource type="PackedScene" uid="uid://ot0n7lo7bx0c" path="res://Scenes/UI/deck_view_window.tscn" id="5_jm5rq"]
+[ext_resource type="PackedScene" uid="uid://o5e4bbonqoqi" path="res://Scenes/UI/PlayableDeckUI.tscn" id="6_btuo1"]
 
 [node name="main" type="Node2D" node_paths=PackedStringArray("deck_n_hand")]
 script = ExtResource("1_ujwgo")
@@ -65,8 +66,16 @@ offset_right = 1145.0
 offset_bottom = 39.0
 text = "Start New Game"
 
+[node name="PlayableDeckUi" parent="." instance=ExtResource("6_btuo1")]
+offset_left = 1.0
+offset_top = 221.0
+offset_right = 501.0
+offset_bottom = 921.0
+scale = Vector2(0.2, 0.2)
+
 [connection signal="card_activated" from="DeckNHand" to="." method="_on_deck_n_hand_card_activated"]
 [connection signal="pressed" from="GameScreen/Button3" to="GameScreen" method="_on_button_3_pressed"]
 [connection signal="pressed" from="GameScreen/ShowDeck" to="." method="_on_show_deck_pressed"]
 [connection signal="pressed" from="GameScreen/DeleteCard" to="DeckNHand" method="_on_delete_card_pressed"]
 [connection signal="pressed" from="StartNewGame" to="." method="_on_start_new_game_pressed"]
+[connection signal="pressed" from="PlayableDeckUi" to="." method="_on_playable_deck_ui_pressed"]

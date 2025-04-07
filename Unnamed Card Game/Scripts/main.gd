@@ -14,6 +14,7 @@ extends Node2D
 
 @onready var gameState: GameState = $GameScreen as GameState
 @onready var deck_view_window: DeckViewWindow = $CanvasLayer/DeckViewWindow as DeckViewWindow
+@onready var deck_ui: PlayableDeckUI = $PlayableDeckUi
 
 @onready var deck: Deck = Deck.new()
 
@@ -39,4 +40,9 @@ func _on_show_deck_pressed():
 	deck_view_window.display_card_list(deck.get_cards())
 
 func _on_start_new_game_pressed():
+	pass # Replace with function body.
+
+func _on_playable_deck_ui_pressed():
+	var card_with_id = deck_ui.draw()
+	deck_n_hand.add_card(card_with_id)
 	pass # Replace with function body.

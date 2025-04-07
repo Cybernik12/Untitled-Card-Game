@@ -1,8 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://o5e4bbonqoqi"]
 
-[ext_resource type="Texture2D" uid="uid://bynjmde50adha" path="res://Assets/Sprites/Cards/Back/Card Layout.png" id="1_t2lij"]
+[ext_resource type="Texture2D" uid="uid://c6b04p5nfgs31" path="res://Assets/Sprites/Cards/Back/Card Back Test 1.1.png" id="1_7wd34"]
 [ext_resource type="Script" path="res://Scripts/UI/PlayableDeckUI.gd" id="2_pou0g"]
 
 [node name="PlayableDeckUi" type="TextureButton"]
-texture_normal = ExtResource("1_t2lij")
+texture_normal = ExtResource("1_7wd34")
 script = ExtResource("2_pou0g")
