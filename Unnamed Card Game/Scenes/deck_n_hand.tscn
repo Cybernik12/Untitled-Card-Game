@@ -5,6 +5,7 @@
 
 [node name="DeckNHand" type="Node2D"]
 script = ExtResource("1_ttgnl")
+debug_mode = null
 
 [node name="Hand" parent="." node_paths=PackedStringArray("deck_n_hand") instance=ExtResource("2_q62dx")]
 position = Vector2(576, 1600)

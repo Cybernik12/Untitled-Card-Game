@@ -11,8 +11,8 @@ signal card_activated(card: UsableCard)
 @export var angle_limit: float = 25
 @export var max_card_spread_angle: float = 5
 
-@onready var test_card = $TestCard
 @onready var collision_shape: CollisionShape2D = $DebugShape
+@onready var usable_card_scene: PackedScene = preload("res://Scenes/Cards/UsableCard.tscn")
 
 var hand: Array[UsableCard] = []
 var touched: Array[UsableCard] = []
@@ -53,17 +53,26 @@ func _process(delta):
 	if (collision_shape.shape as CircleShape2D).radius != hand_radius:
 		(collision_shape.shape as CircleShape2D).set_radius(hand_radius)
 
+func empty_hand():
+	current_selected_card_index = -1
+	for card in hand:
+		card.queue_free()
+	hand = []
+	touched = []
+
 func get_card_position(angle_in_deg: float) -> Vector2:
 	var x: float = hand_radius * cos(deg_to_rad(angle_in_deg))
 	var y: float = hand_radius * sin(deg_to_rad(angle_in_deg))
 	
 	return Vector2(x, y)
 
-func add_card(card: UsableCard):
-	hand.push_back(card)
-	add_child(card)
-	card.mouse_entered.connect(_handle_card_touched)
-	card.mouse_exited.connect(_handle_card_untouched)
+func add_card(card_data: CardData):
+	var usable_card = usable_card_scene.instantiate()
+	hand.push_back(usable_card)
+	add_child(usable_card)
+	usable_card.load_card_data(card_data)
+	usable_card.mouse_entered.connect(_handle_card_touched)
+	usable_card.mouse_exited.connect(_handle_card_untouched)
 	reposition_cards()
 
 func remove_card(index: int) -> Node2D:

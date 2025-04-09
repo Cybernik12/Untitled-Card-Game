@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://chdrbkatt6x5b"]
+
+[ext_resource type="Script" path="res://Scripts/Data_Objects/Card_Data.gd" id="1_wj7vu"]
+[ext_resource type="Texture2D" uid="uid://bmj8k0r1ygma7" path="res://Assets/Sprites/Cards/Creature/Charley_Face.png" id="2_n32h3"]
+
+[resource]
+script = ExtResource("1_wj7vu")
+card_image = ExtResource("2_n32h3")
+card_cost = 1
+card_name = "Charlie / Creature / Critical / Boost"
+card_effect = " No Effect."
+card_atk = 5000
+card_def = 10000
+actions = Array[GDScript]([null])

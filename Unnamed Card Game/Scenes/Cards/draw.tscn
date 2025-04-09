@@ -5,9 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dulhoycdsk6xg" path="res://Assets/Sprites/Cards/Spells/Draw_Face.png" id="2_2shxo"]
 [ext_resource type="Script" path="res://Scripts/Cards_Scripts/Draw_Effect.gd" id="4_bax2r"]
 
-[node name="Draw" type="Node2D" node_paths=PackedStringArray("action", "card")]
+[node name="Draw" type="Node2D" node_paths=PackedStringArray("card")]
 script = ExtResource("1_3ji34")
-action = NodePath("Draw_Effect")
 card = NodePath("Card")
 
 [node name="Card" parent="." node_paths=PackedStringArray("card_image") instance=ExtResource("1_253g3")]

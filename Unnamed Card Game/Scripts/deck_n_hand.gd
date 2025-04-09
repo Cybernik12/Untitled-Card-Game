@@ -15,8 +15,8 @@ signal card_activated(card: UsableCard)
 @export var player1: Player1
 @export var deck: Deck
 
-@onready var charlie_card_scene: PackedScene = preload("res://Scenes/Cards/charlie.tscn")
-@onready var draw_card_scene: PackedScene = preload("res://Scenes/Cards/draw.tscn")
+@onready var charlie_card_data: CardData = preload("res://Card_Data/Charlie_card.tres")
+@onready var draw_card_data: CardData = preload("res://Card_Data/Charlie_card.tres")
 
 @onready var hand: Hand = $Hand
 
@@ -28,16 +28,17 @@ func _ready():
 func _process(delta):
 	pass
 
+func reset():
+	hand.empty_hand()
+
 func add_card(card_with_id: CardWithID):
 	hand.add_card(card_with_id.card)
 
 func _on_button_pressed():
-	var charlie_card = charlie_card_scene.instantiate()
-	deck.add_card(charlie_card)
+	deck.add_card(charlie_card_data.duplicate())
 
 func _on_button_2_pressed():
-	var draw_card = draw_card_scene.instantiate()
-	deck.add_card(draw_card)
+	deck.add_card(draw_card_data.duplicate())
 
 func _on_hand_card_activated(card):
 	card_activated.emit(card)

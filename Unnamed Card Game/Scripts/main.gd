@@ -18,6 +18,12 @@ extends Node2D
 
 @onready var deck: Deck = Deck.new()
 
+func restart_game():
+	gameState.current_state = GameState.Phase.Setup
+	deck_n_hand.reset()
+	deck_ui.deck = deck.get_playable_deck()
+	deck_ui.visible = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	deck_n_hand.deck = deck
@@ -44,8 +50,7 @@ func _on_show_deck_pressed():
 		deck_view_window.display_card_list(deck.get_cards())
 
 func _on_start_new_game_pressed():
-	deck_ui.deck = deck.get_playable_deck()
-	deck_ui.visible = true
+	restart_game()
 
 func _on_playable_deck_ui_pressed():
 	var card_with_id = deck_ui.draw()

@@ -1,4 +1,4 @@
-extends Node2D
+extends Node2D # This does not work. It wants to be RefCounted but you are using the @export and @onready. This breaks the adding of these cards into the deck.
 class_name Card_Effects
 
 @export var card: Card
