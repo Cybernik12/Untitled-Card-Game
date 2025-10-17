@@ -22,9 +22,8 @@ position = Vector2(2, -50)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_2shxo")
 
-[node name="Draw_Effect" type="Node2D" parent="." node_paths=PackedStringArray("card")]
+[node name="Draw_Effect" type="Node2D" parent="."]
 script = ExtResource("4_bax2r")
-card = NodePath("../Card")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

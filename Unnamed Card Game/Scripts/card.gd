@@ -32,7 +32,7 @@ func _ready():
 	set_card_values(card_cost, card_name, card_effect, card_atk, card_def)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	#_update_graphics()
 	pass
 

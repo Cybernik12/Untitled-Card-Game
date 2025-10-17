@@ -5,7 +5,7 @@ const CARD_COMPONENT_POSITION: Vector2 = Vector2(100, 138)
 
 @onready var usable_card_scene = preload("res://Scenes/Cards/UsableCard.tscn")
 
-var usable_card: UsableCard
+# var usable_card: UsableCard
 
 var card: CardData:
 	set(_card):

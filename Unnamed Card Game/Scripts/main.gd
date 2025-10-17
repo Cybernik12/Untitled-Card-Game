@@ -19,7 +19,7 @@ extends Node2D
 @onready var deck: Deck = Deck.new()
 
 func restart_game():
-	gameState.current_state = GameState.Phase.Setup
+	#gameState.current_state = GameState.Phase.Setup
 	deck_n_hand.reset()
 	deck_ui.deck = deck.get_playable_deck()
 	deck_ui.visible = true
@@ -30,7 +30,7 @@ func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	$ManaAmount.set_text(str($GameScreen/Player1.mana))
 	pass
 

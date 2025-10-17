@@ -34,7 +34,7 @@ func _input(event):
 			current_selected_card_index = -1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	for card in hand:
 		current_selected_card_index = -1
 		card.unhighlight()

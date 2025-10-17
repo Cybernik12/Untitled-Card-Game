@@ -25,7 +25,7 @@ func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func highlight():
@@ -34,10 +34,10 @@ func highlight():
 func unhighlight():
 	$Card.unhighlight()
 
-func _on_card_mouse_entered(card):
+func _on_card_mouse_entered(_card):
 	mouse_entered.emit(self)
 
-func _on_card_mouse_exited(card):
+func _on_card_mouse_exited(_card):
 	mouse_exited.emit(self)
 
 func activate(game_state: Dictionary, deck_n_hand: Deck_n_Hand):
@@ -46,8 +46,8 @@ func activate(game_state: Dictionary, deck_n_hand: Deck_n_Hand):
 
 func _get_card_stats():
 	var cost = card.card_cost
-	var name = card.card_name
+	var c_name = card.card_name
 	var effect = card.card_effect
 	var atk = card.card_atk
 	var def = card.card_def
-	return [cost, name, effect, atk, def]
+	return [cost, c_name, effect, atk, def]
